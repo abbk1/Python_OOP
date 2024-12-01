@@ -1,0 +1,18 @@
+class Vehicles:
+    def __init__(self, action):
+        self.action = action
+    def move(self)->None:
+        raise NotImplementedError("Subclasses must implement this method.")
+    
+class Car(Vehicles):
+    def move(self)->None:
+        return f"{self.action}"
+    
+class Plane(Vehicles):
+    def move(self)->None:
+        return f"{self.action}"
+    
+car = Car("Car is driving 🚗🚗🚗")
+plane = Plane("Plane is Flying 🛩️🛩️🛩️")
+print(car.move())
+print(plane.move())
