@@ -1,0 +1,58 @@
+class Car:
+    # initializer
+    def __init__(self, carName: str, color: str, model: str, wheels: int):
+        self.name = carName
+        self.color = color
+        self.model = model
+        self.wheels = wheels
+        self.switch: bool = False
+        
+    # method 
+    def startEngine(self):
+        if self.switch:
+            return f"The Car: {self.name} is already On You Can Drive"
+        else:
+            self.switch = True
+            return f"The Car: {self.name} Engine is On Now 💡💡💡"
+        
+    def stopEngine(self):
+        if self.switch:
+            return f"The Car {self.name} Engine is already Off!!!"
+        else:
+            return f"The Car {self.name} is now Off!!!"
+    
+    def drive(self, runningTime: int):
+        return self.run(runningTime)
+    
+    def run(self, time: int):
+        return f"The Car: {self.name} Run for {time} seconds"
+    
+    def __str__(self):
+        return f"Name: {self.name} Color: {self.color} Model: {self.model}"
+    
+# person class
+class Person(Car):
+    # initializer
+    def __init__(self, pName, occupation, carName, color, model, wheels):
+        self.pName = pName
+        self.occupation = occupation
+        self.active = 1
+        Car.__init__(self, carName, color, model, wheels)
+        
+    def personDriving(self):
+        if self.active == 0:
+            return f"No active Driver to Drive Now"
+        else:
+            self.active = 1
+            return f"Mr. {self.pName} is Driving the Car: {self.name} Color: {self.color} with Wheels: {self.wheels}"
+    
+        
+
+car = Car("Honda", "Brown", "HDA221123", 4)
+person = Person("Abubakar", "Programmer", "Honda", "Brown", "HND1122", 4,)
+
+print(car.startEngine())
+print(person.personDriving())
+print(car.drive(30))
+print(car.stopEngine())
+print(car.startEngine())
